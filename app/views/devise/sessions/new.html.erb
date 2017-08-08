@@ -1,0 +1,48 @@
+<div class="authform">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2>Sign in</h2>
+    </div>
+    <div class="panel-body">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <% if flash[:notice] %>
+            <p class="alert alert-warning"><%= notice %></p>
+          <% end %>
+          <% if flash[:alert] %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
+        <div class="input-group form-group">
+          <span class="input-group-addon">@</span>
+          <%= f.email_field :email, {
+            class: "form-control", placeholder: "Email", autofocus: true
+          }%>
+        </div>
+        <div class="input-group form-group">
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+          </span>
+          <%= f.password_field :password, {
+            class: "form-control", placeholder: "Password", autocomplete: "off"
+          }%>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="form-group">
+            <div class="checkbox">
+              <label>
+                <%= f.check_box :remember_me %>Remember
+              </label>
+            </div>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.submit "Sign in", class:"btn btn-primary" %>
+          <div class="text-right" style="float: right;">
+        <div class="form-group">
+          <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
