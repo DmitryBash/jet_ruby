@@ -62,4 +62,4 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'whenever', :require => false

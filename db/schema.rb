@@ -10,14 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808170755) do
+ActiveRecord::Schema.define(version: 20170809085400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dashboards", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
+    t.date "order_date"
+    t.string "full_name"
+    t.string "email"
+    t.string "phone"
+    t.float "order_sum"
+    t.bigint "profile_id"
+    t.bigint "week_day_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_orders_on_profile_id"
+    t.index ["week_day_id"], name: "index_orders_on_week_day_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -49,6 +58,14 @@ ActiveRecord::Schema.define(version: 20170808170755) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "week_days", force: :cascade do |t|
+    t.string "day_name"
+    t.date "today_date"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
