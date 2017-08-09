@@ -5,9 +5,8 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :full_name
       t.string :email
       t.string :phone
-      t.float :order_sum
+      t.float :order_sum, default: 0
       t.belongs_to :profile, index: true
-      t.belongs_to :week_day, index: true
       t.timestamps
     end
   end

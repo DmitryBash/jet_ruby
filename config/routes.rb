@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show, :update, :edit]
   get 'dashboard', to: 'dashboards#show'
   resources :week_days, only: [:show, :create] do
-    resources :orders
+    resources :products, only: [:create]
   end
+  resources :orders, only: [:create]
 end

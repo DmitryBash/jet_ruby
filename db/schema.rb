@@ -10,23 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170809085400) do
+ActiveRecord::Schema.define(version: 20170809111746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "order_products", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
+  end
 
   create_table "orders", force: :cascade do |t|
     t.date "order_date"
     t.string "full_name"
     t.string "email"
     t.string "phone"
-    t.float "order_sum"
+    t.float "order_sum", default: 0.0
     t.bigint "profile_id"
-    t.bigint "week_day_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_orders_on_profile_id"
-    t.index ["week_day_id"], name: "index_orders_on_week_day_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.integer "category"
+    t.string "name"
+    t.float "price"
+    t.date "today_date"
+    t.bigint "week_day_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["week_day_id"], name: "index_products_on_week_day_id"
   end
 
   create_table "profiles", force: :cascade do |t|

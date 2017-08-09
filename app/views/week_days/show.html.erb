@@ -1,2 +1,11 @@
-<h1>WeekDays#show</h1>
-<p>Find me in app/views/week_days/show.html.erb</p>
+<%= form_tag orders_path, method: :post do %>
+  <ul>
+  <% @products.each do |product| %>
+    <li>
+      <%= check_box_tag "product_ids[]", product.id %>
+      <%= product.name %>
+    </li>
+  <% end %>
+  </ul>
+  <%= submit_tag "Add" %>
+<% end %>
