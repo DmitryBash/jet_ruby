@@ -1,11 +1,14 @@
 <%= form_tag orders_path, method: :post do %>
-  <ul>
-  <% @products.each do |product| %>
-    <li>
-      <%= check_box_tag "product_ids[]", product.id %>
-      <%= product.name %>
-    </li>
+  <% @products.each do |key, value| %>
+  <h3><%= key %></h3>
+    <% value.each do |product| %>
+      <p>
+        <%= check_box_tag "product_ids[]", product.id, false, class: "#{key}" %>
+        <%= product.name %>
+        -
+        <%= product.price %>
+      </p>
+    <% end %>
   <% end %>
-  </ul>
   <%= submit_tag "Add" %>
 <% end %>

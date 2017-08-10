@@ -11,8 +11,17 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require bootstrap-sprockets
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function () {
+  $("input:checkbox").click(function() {
+    $('input:checkbox[class="' + $(this).attr('class') + '"]').prop('checked', false);
+    $(this).prop('checked', true);
+  });
+});
+
+
