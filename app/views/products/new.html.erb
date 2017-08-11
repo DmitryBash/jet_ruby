@@ -1,0 +1,7 @@
+<%= form_for [@week_day, @product] do |f| %>
+  <p><%= f.text_field :price, placeholder: 'Price' %></p>
+  <p><%= f.text_field :name, placeholder: 'Name' %></p>
+  <p><%= f.select :category, Product.categories.keys, {}, { class: 'form-control' } %></p>
+  <%= f.hidden_field :today_date, :value => Date.today %>
+  <%= f.submit 'Create' %>
+<% end %>

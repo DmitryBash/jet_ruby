@@ -1,0 +1,13 @@
+<h1>Users</h1>
+
+<%= form_tag(admin_users_path, method: :get) do %>
+  <%= text_field_tag :email, params[:email] %>
+  <%= submit_tag 'Search', email: nil %>
+<% end %>
+
+<% @users.each do |user| %>
+  <div class='users'>
+      <strong> <%= user.email %> </strong>
+      <%= link_to 'User profile', profile_path(user.id) %>
+  </div>
+<% end %>

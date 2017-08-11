@@ -24,7 +24,7 @@ class Ability
 
   def user_abilities
     guest_abilities
-    can :show, [WeekDay, Profile]
+    can :show, [WeekDay, Profile, :dashboard]
     can :create, [Order]
     can :update, [Profile]
   end

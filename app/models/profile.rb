@@ -4,4 +4,8 @@ class Profile < ApplicationRecord
   mount_uploader :photo_url, PhotoUploader
   enum sex: [:male, :female]
   has_many :orders
+
+  def add_full_name
+    first_name + ' ' + last_name
+  end
 end

@@ -1,0 +1,13 @@
+<h3>Week Days</h3>
+
+<%= form_tag(admin_week_days_path, method: :get) do %>
+  <%= text_field_tag :day_name, params[:day_name] %>
+  <%= submit_tag 'Search', day_name: nil %>
+<% end %>
+
+<% @week_days.each do |week_day| %>
+  <div class='week_days'>
+      <strong> <%= link_to week_day.day_name, admin_week_day_path(week_day.id) %> </strong>
+      <%= week_day.today_date %>
+  </div>
+<% end %>

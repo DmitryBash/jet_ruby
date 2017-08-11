@@ -1,0 +1,10 @@
+<% @orders.each do |order| %>
+  <div class='week_days'>
+      <strong> <%= order.email %> </strong>
+      <%= order.order_date %>
+      -
+      <%= order.order_sum %> $
+  </div>
+<% end %>
+
+<%= total_sum(@orders) %>

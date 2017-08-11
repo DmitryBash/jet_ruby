@@ -1,7 +1,8 @@
 class CreateAndCalculateOrderSum
-  attr_accessor :order, :products
+  attr_accessor :order, :products, :user
 
   def initialize(user, params)
+    @user = user
     @order = Order.new(profile_id: user.profile.id)
     @products = Product.where(id: params[:product_ids])
   end
@@ -11,6 +12,7 @@ class CreateAndCalculateOrderSum
       order.products << product
     end
     calculate_order_sum(order)
+    init_fields(order, user)
     order.save!
   end
 
@@ -18,5 +20,12 @@ class CreateAndCalculateOrderSum
     order.products.each do |product|
       order.order_sum += product.price
     end
+  end
+
+  def init_fields(order, user)
+    order.full_name = user.profile.add_full_name
+    order.email = user.email
+    order.order_date = Date.today
+    order.phone = user.profile.phone
   end
 end

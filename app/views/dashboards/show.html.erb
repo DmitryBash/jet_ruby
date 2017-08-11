@@ -1,3 +1,7 @@
 <% @week_days.each do |week_day| %>
-  <p> <%= link_to week_day.day_name, week_day_path(week_day.id) %> </p>
+  <% if week_day.active? %>
+    <p><%= link_to week_day.day_name, week_day_path(week_day.id) %></p>
+  <% else %>
+    <p><%= week_day.day_name %></p>
+  <% end %>
 <% end %>

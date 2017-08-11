@@ -10,5 +10,10 @@
       </p>
     <% end %>
   <% end %>
-  <%= submit_tag "Add" %>
+  <%= submit_tag "Make order" %>
 <% end %>
+
+<% if can? :create, @product %>
+  <%= link_to 'Add product', new_week_day_product_path(@week_day.id) if @week_day.today_date == Date.today %>
+<% end %>
+

@@ -12,4 +12,12 @@ class User < ApplicationRecord
   def create_profile
     Profile.create(id: id, user_id: id)
   end
+
+  def self.search(email)
+    if email
+      where('email LIKE ?', "%#{email}%")
+    else
+      all
+    end
+  end
 end

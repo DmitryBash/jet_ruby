@@ -23,9 +23,9 @@ set :output, "#{Whenever.path}/log/cron.log"
 set :environment, :development
 
 every :monday, :at => '12:01 am' do
-  rake "week_day:week_day['Create']"
+  rake "week_day:week_day[true]"
 end
 
 every 1.day, at: '12:01 am' do
-  rake "week_day:week_day['Update']"
+  rake "week_day:week_day"
 end
