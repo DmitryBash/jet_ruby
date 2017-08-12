@@ -12,3 +12,8 @@ https://gorails.com/forum/jwt-authentication-using-devise
 
 https://gorails.com/episodes?utf8=%E2%9C%93&q%5Bname_or_description_cont%5D=JSON+Web+Tokens&q%5Bfree_eq%5D=&commit=Search
 https://www.google.com/search?q=devise-jwt&source=lnms&tbm=vid&sa=X&ved=0ahUKEwjaiLLM-c7VAhVHCMAKHbUCDtUQ_AUICygC&biw=1600&bih=790
+
+
+
+JsonWebToken.encode({sub: 3})
+curl -v -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImV4cCI6MTUwMjQ2NDA3OH0.9t0mdmPWY2kSECfNbnx44ylZM3VEYOK1rJx9d1OBoXE" http://localhost:3000/api/orders

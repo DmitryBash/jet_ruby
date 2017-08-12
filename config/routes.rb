@@ -14,4 +14,9 @@ Rails.application.routes.draw do
     resources :week_days, only: [:index, :show]
     root to: 'admin_panel#index'
   end
+
+  namespace :api do
+    post :auth, to: "authentication#create"
+    resources :orders, only: [:index]
+  end
 end

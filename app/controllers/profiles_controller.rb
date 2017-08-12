@@ -30,6 +30,7 @@ class ProfilesController < ApplicationController
                                     :birthdate,
                                     :sex,
                                     :phone,
+                                    :user_id,
                                     :photo_url)
   end
 end

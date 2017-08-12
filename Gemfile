@@ -64,4 +64,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'whenever', :require => false
 gem 'cancancan', '~> 2.0'
-
+gem 'active_model_serializers', '~> 0.10.6'
+gem 'jwt'
