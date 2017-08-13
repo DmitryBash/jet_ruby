@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :profiles, only: [:show, :update, :edit]
-  resources :week_days, only: [:show, :create] do
+  resources :week_days, only: [:show] do
     resources :products, only: [:new, :create]
   end
   resources :orders, only: [:create]
