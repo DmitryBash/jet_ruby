@@ -26,6 +26,12 @@ every :monday, :at => '12:01 am' do
   rake "week_day:week_day[true]"
 end
 
-every 1.day, at: '12:01 am' do
+every 1.day, at: '12:05 am' do
   rake "week_day:week_day"
 end
+
+
+every 1.day, at: '12:05 am' do
+  rake "organisation:organisation_update"
+end
+

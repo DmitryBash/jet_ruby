@@ -41,6 +41,12 @@
         </div>
         <div class="input-group form-group">
           <span class="input-group-addon">
+            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          </span>
+            <%= f.select :organisation_id, Organisation.where.not(id: 1).collect {|o| [ o.organisation_name, o.id ] }, {}, { class: 'form-control' } %>
+        </div>
+        <div class="input-group form-group">
+          <span class="input-group-addon">
             <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
           </span>
             <%= f.text_field :phone, {
@@ -65,4 +71,3 @@
     </div>
   </div>
 </div>
-

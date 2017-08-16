@@ -7,13 +7,17 @@ class CreateAndCalculateOrderSum
     @products = Product.where(id: params[:product_ids])
   end
 
-  def create_order
-    products.each do |product|
-      order.products << product
+  def call
+    begin
+      products.each do |product|
+        order.products << product
+      end
+      calculate_order_sum(order)
+      init_fields(order, user)
+      order.save!
+    rescue => error
+      puts error.inspect
     end
-    calculate_order_sum(order)
-    init_fields(order, user)
-    order.save!
   end
 
   def calculate_order_sum(order)
@@ -27,5 +31,6 @@ class CreateAndCalculateOrderSum
     order.email = user.email
     order.order_date = Date.today
     order.phone = user.profile.phone
+    order.organisation_id = user.profile.organisation_id
   end
 end

@@ -7,6 +7,7 @@
         <%= product.name %>
         -
         <%= product.price %>
+        <%= image_tag product.photo_url, size: "50x50" if product.photo_url%>
       </p>
     <% end %>
   <% end %>

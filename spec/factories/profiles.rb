@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :profile do
     user
+    organisation
 
     sequence :first_name do |n|
       "Dmitry#{n}"

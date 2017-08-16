@@ -35,6 +35,12 @@
               </li>
               <li role="separator" class="divider"></li>
               <li>
+                <%= link_to new_organisation_path do %>
+                  <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                  <span> New Organisation</span>
+                <% end %>
+              </li>
+               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
                   <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
                   <span> Logout</span>

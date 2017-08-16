@@ -1,6 +1,6 @@
 class WeekDay < ApplicationRecord
   has_many :products
-  validates :day_name, :today_date, :active, presence: true
+  validates :day_name, :today_date, presence: true
 
   private
 

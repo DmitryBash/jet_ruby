@@ -31,6 +31,7 @@ class ProfilesController < ApplicationController
                                     :sex,
                                     :phone,
                                     :user_id,
+                                    :organisation_id,
                                     :photo_url)
   end
 end

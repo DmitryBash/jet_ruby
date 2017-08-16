@@ -1,7 +1,13 @@
 <%= form_for [@week_day, @product] do |f| %>
   <p><%= f.text_field :price, placeholder: 'Price' %></p>
   <p><%= f.text_field :name, placeholder: 'Name' %></p>
-  <p><%= f.select :category, Product.categories.keys, {}, { class: 'form-control' } %></p>
-  <%= f.hidden_field :today_date, :value => Date.today %>
+  <p><%= f.select :category, Product.categories.keys, {} %></p>
+  <% if @week_day.day_name == 'Weekly Menus' %>
+    <p><%= f.select :organisation_id, Organisation.where(id: 1).collect {|o| [ o.organisation_name, o.id ] } %></p>
+  <% else %>
+    <p><%= f.select :organisation_id, Organisation.where.not(id: 1).collect {|o| [ o.organisation_name, o.id ] } %></p>
+  <% end %>
+  <p><%= f.file_field :photo_url %></p>
+  <p><%= f.hidden_field :today_date, :value => Date.today %></p>
   <%= f.submit 'Create' %>
 <% end %>

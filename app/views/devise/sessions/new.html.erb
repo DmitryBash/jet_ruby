@@ -39,6 +39,8 @@
         <div class="form-group">
           <%= f.submit "Sign in", class:"btn btn-primary" %>
           <div class="text-right" style="float: right;">
+            <%= link_to 'Google',user_google_oauth2_omniauth_authorize_path %>
+          </div>
         <div class="form-group">
           <%= render "devise/shared/links" %>
         </div>

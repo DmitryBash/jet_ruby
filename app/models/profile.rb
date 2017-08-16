@@ -5,6 +5,7 @@ class Profile < ApplicationRecord
 
   has_many :orders
   belongs_to :user
+  belongs_to :organisation
 
   def add_full_name
     first_name + ' ' + last_name

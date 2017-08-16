@@ -50,6 +50,7 @@ group :test do
   gem 'capybara-email'
   gem 'capybara-webkit'
   gem 'rails-controller-testing'
+  gem 'launchy'
 end
 
 group :development do
@@ -74,3 +75,6 @@ gem 'whenever', :require => false
 gem 'cancancan', '~> 2.0'
 gem 'active_model_serializers', '~> 0.10.6'
 gem 'jwt'
+gem 'rails-observers'
+gem 'sidekiq'
+gem 'omniauth-google-oauth2'

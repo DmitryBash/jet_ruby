@@ -1,0 +1,6 @@
+<%= form_for @organisation do |f| %>
+  <p><%= f.text_field :organisation_name, placeholder: 'Organisation Name' %></p>
+  <p><%= f.hidden_field :today_date, :value => Date.today %></p>
+  <p><%= f.hidden_field :today_menu_active, :value => false %></p>
+  <%= f.submit 'Create Organisation' %>
+<% end %>

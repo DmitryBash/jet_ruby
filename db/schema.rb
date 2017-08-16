@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170811132200) do
+ActiveRecord::Schema.define(version: 20170815142036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,17 @@ ActiveRecord::Schema.define(version: 20170811132200) do
     t.bigint "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "organisation_id"
+    t.index ["organisation_id"], name: "index_orders_on_organisation_id"
     t.index ["profile_id"], name: "index_orders_on_profile_id"
+  end
+
+  create_table "organisations", force: :cascade do |t|
+    t.string "organisation_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "today_date"
+    t.boolean "today_menu_active", default: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -44,6 +54,9 @@ ActiveRecord::Schema.define(version: 20170811132200) do
     t.bigint "week_day_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "organisation_id"
+    t.string "photo_url"
+    t.index ["organisation_id"], name: "index_products_on_organisation_id"
     t.index ["week_day_id"], name: "index_products_on_week_day_id"
   end
 
@@ -57,6 +70,8 @@ ActiveRecord::Schema.define(version: 20170811132200) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "sex"
+    t.integer "organisation_id"
+    t.index ["organisation_id"], name: "index_profiles_on_organisation_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
@@ -74,6 +89,8 @@ ActiveRecord::Schema.define(version: 20170811132200) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

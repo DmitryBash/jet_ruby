@@ -5,5 +5,4 @@ describe WeekDay, type: :model do
 
   it { should validate_presence_of :day_name }
   it { should validate_presence_of :today_date }
-  it { should validate_presence_of :active }
 end
