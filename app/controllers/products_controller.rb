@@ -8,7 +8,13 @@ class ProductsController < ApplicationController
 
   def create
     @product = @week_day.products.create(product_params)
-    redirect_to @week_day
+    if @product.save
+      flash[:success] = "Product was create"
+      redirect_to @week_day
+    else
+      flash.now[:error] = @product.errors.full_messages.join('\n')
+      render :new
+    end
   end
 
   private

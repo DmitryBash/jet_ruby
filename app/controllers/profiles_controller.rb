@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
       redirect_to @profile
     else
       flash[:error] = @profile.errors.full_messages.join('\n')
-      redirect_to @profile
+      render :edit
     end
   end
 

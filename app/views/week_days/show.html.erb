@@ -7,14 +7,13 @@
         <%= product.name %>
         -
         <%= product.price %>
-        <%= image_tag product.photo_url, size: "50x50" if product.photo_url%>
+        <%= image_tag product.photo_url, class: "img-circle", size: "50x50" if product.photo_url%>
       </p>
     <% end %>
   <% end %>
-  <%= submit_tag "Make order" %>
+  <%= submit_tag "Make order" if @week_day.today_date == Date.today %>
 <% end %>
 
 <% if can? :create, @product %>
   <%= link_to 'Add product', new_week_day_product_path(@week_day.id) if @week_day.today_date == Date.today %>
 <% end %>
-

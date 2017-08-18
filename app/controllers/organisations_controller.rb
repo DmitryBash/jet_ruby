@@ -6,12 +6,13 @@ class OrganisationsController < ApplicationController
   end
 
   def create
-    if @organisation = Organisation.create(org_params)
+    @organisation = Organisation.create(org_params)
+    if @organisation.save
       flash[:success] = "Organisation Created"
       redirect_to root_url
     else
       flash[:error] = @organisation.errors.full_messages.join('\n')
-      redirect_to new_organisation_path
+      render :new
     end
   end
 

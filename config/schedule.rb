@@ -24,14 +24,15 @@ set :environment, :development
 
 every :monday, :at => '12:01 am' do
   rake "week_day:week_day[true]"
+  rake "weekly_menus:weekly_menus_create"
 end
 
 every 1.day, at: '12:05 am' do
   rake "week_day:week_day"
 end
 
-
-every 1.day, at: '12:05 am' do
+every 1.day, at: '12:10 am' do
   rake "organisation:organisation_update"
+  rake "weekly_menus:weekly_menus_update"
 end
 
