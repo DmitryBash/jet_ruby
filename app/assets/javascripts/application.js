@@ -13,15 +13,13 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function () {
+$(document).on('turbolinks:load', function() {
   $("input:checkbox").click(function() {
     $('input:checkbox[class="' + $(this).attr('class') + '"]').prop('checked', false);
     $(this).prop('checked', true);
   });
 });
-
-
